@@ -1,0 +1,94 @@
+﻿<header>
+    <div class="content-wrapper">
+        <div class="float-left">
+            <p class="site-title">
+                <a href="~/">ASP.NET Web API</a></p>
+        </div>
+    </div>
+</header>
+
+@section head{
+    <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+}
+
+<div id="body">
+    
+    <div id="resultado" align="center" title="Resultado API">
+        
+    </div>
+    
+    <hr />
+    <h3>Buscar todas as pessoas</h3>
+    <button id="btnGetAll" onclick="GetAll()">Buscar</button>
+
+    <hr />    
+    <h3>Buscar pessoas por ID</h3>
+    <input type="text" id="idPessoa" placeholder="Digite o id da pessoa" />
+    <button id="btnGetPessoa" onclick="GetPessoa()">Buscar</button>
+
+    <hr />
+    <h3>Put, Post, Delete</h3>
+    <button onclick="PutPessoa()" id="btnPut">Put</button>
+    <button onclick="PostPessoa()" id="btnPost">Post</button>
+    <button onclick="DeletePessoa()" id="btnDelete">Delete</button>
+</div>
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.11.4.js"></script>
+    <script>
+        $('#btnGetAll').button();
+        $('#btnGetPessoa').button();
+        $('#btnPut').button();
+        $('#btnPost').button();
+        $('#btnDelete').button();
+        
+        var pessoa = { "Id": 4, "Nome": "Willian", "Email": "ws.barreto@hotmail.com", "Idade": "28" };
+
+        function PutPessoa() {
+            $.ajax({
+                url: '/api/pessoa/' + pessoa.Id,
+                type: 'PUT',
+                data: pessoa
+            }).done(function () {
+                alert('Registro enviado');});
+        }
+
+        function PostPessoa() {
+            $.ajax({
+                url: '/api/pessoa',
+                type: 'POST',
+                data: pessoa
+            }).done(function () {
+                alert('Registro enviado');
+            });
+        }
+
+        function DeletePessoa() {
+            $.ajax({
+                url: '/api/pessoa/' + pessoa.Id,
+                type: 'Delete',
+                data: pessoa
+            }).done(function () {
+                alert('Registro apagado');
+            });
+        }
+
+        function GetPessoa() {
+            var id = $('#idPessoa').val();
+            $.get('/api/pessoa/' + id, function (data) {
+                $('#resultado').html(data.Nome);
+                $("#resultado").dialog();
+            });
+        }
+
+        function GetAll() {
+            var content = '<ul>';
+            $.get('/api/pessoa', function (data) {
+                $.each(data, function (e) {
+                    content += '<li>' + data[e].Nome + '</li>';
+                });
+                $('#resultado').html(content);
+                $("#resultado").dialog();
+            })
+        }
+    </script>
+}
