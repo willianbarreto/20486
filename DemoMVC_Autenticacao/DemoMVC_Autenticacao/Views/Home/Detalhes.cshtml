@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+@if (HttpContext.Current.User.Identity.IsAuthenticated)
+{
+    <span>Olá @HttpContext.Current.User.Identity.Name, seja bem vindo.</span>
+    
+}

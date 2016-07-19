@@ -1,0 +1,62 @@
+﻿@model DemoMVC_Autenticacao.Models.User
+
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<h2>Login</h2>
+@section head{
+    <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+}
+
+<div id="result" title="ERROR">
+    <p>Erro ao efetuar o login</p>
+</div>
+
+@*@using (Html.BeginForm()) { }*@
+
+@*@using (Ajax.BeginForm("", new AjaxOptions { UpdateTargetId = "result" }))
+{*@
+@using (Html.BeginForm()) { 
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <legend>User</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div id="User" class="editor-field">
+            @Html.EditorFor(model => model.UserName)
+            @Html.ValidationMessageFor(model => model.UserName, "ERROR")
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <p>
+            <input type="submit" id="btnCreate" value="Create" />
+        </p>
+    </fieldset>
+}
+<button id="bt" onclick="ShowDialog()">BTN</button>
+@section Scripts {
+    <script src="~/Scripts/jquery-ui-1.11.4.js"></script>
+    <script src="~/Scripts/meuScript.js"></script>
+
+    @*<script>
+        $('#btnCreate').button();
+        
+
+        function ShowDialog() {
+            $("#dialog").dialog();
+        }
+    </script>*@
+}
