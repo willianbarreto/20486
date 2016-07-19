@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "RequisicoesAjax";
+}
+
+<h2>Requisições Ajax</h2>
+
+<hr />
+
+<div id="result"></div>
+
+<hr />
+
+<h3>Jquery - Get</h3>
+
+<button id="btnGet" onclick="jQueryGet()">Enviar</button>
+<hr />
+<h3>JQuery - Post</h3>
+@Html.TextBox("Nome", null, new {placeholder = "Digite o usuário"})
+@Html.TextBox("Senha", null, new {placeholder = "Digite sua senha"})
+<br />
+<button id="btnPost" onclick="jQueryPost()">Validar</button>
+<hr />
+
+<button id="btnLoad" onclick="jQueryLoad()">jQuery Load</button>
+<hr />
+<h3>jQuery - Ajax</h3>
+@Html.TextBox("palavra", null, new{placeholder="Digite uma palavra"})
+<button id="btnAjax" onclick="jQueryAjax()">jQueryAjax</button>
+
+@section scripts{
+    <script>
+        function jQueryAjax() {
+            $.ajax({
+                url: '/home/Inverter',
+                data: { palavra: $('#palavra').val() },
+                success: function (data) {
+                    $('#result').html(data);
+                },
+                async:false,
+                error: function () {
+                    $('#result').html('Ocorreu um erro');
+                }
+            });
+        }
+
+        /*jQuery Load faz o objeto chamar um método ou função*/
+        function jQueryLoad() {
+            $('#result').load('/home/mensagem');
+        }
+
+        /**/
+        function jQueryPost() {
+            var usuario = { Nome: $('#Nome').val(), Senha: $('#Senha').val() };
+            $.post('/home/Autenticacao', usuario, function (data) {
+                $('#result').html(data.Mensagem);
+            });
+        }
+
+        /*jQuery Get joga o valor de um resultado no objeto*/
+        function jQueryGet() {
+            $.get('/home/jqueryget', function (data) {
+                $('#result').html(data);
+            });
+        }
+    </script>
+}

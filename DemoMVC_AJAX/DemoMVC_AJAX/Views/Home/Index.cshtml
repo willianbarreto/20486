@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+
+@*@Html.ActionLink("RequisicoesAjax", "RequisicoesAjax")
+<hr />
+@Html.ActionLink("jQueryUI", "jQueryUI")*@
+
+<div id="resultado"></div>
+<br />
+@*@Html.TextBox("txt")*@
+@*@Ajax.ActionLink("Exibir mensagem", "Mensagem", new AjaxOptions
+{
+    UpdateTargetId = "resultado",
+    InsertionMode = InsertionMode.Replace
+})
+<hr />*@
+
+@using (Ajax.BeginForm("AutorizarUsuario", new AjaxOptions
+{
+    UpdateTargetId = "resultado"
+}))
+{
+    @Html.TextBox("nome", null, new { placeholder = "digite seu usuário" })<br />
+    @Html.Password("senha", null, new { placeholder = "digite sua senha" })<br />
+    <input type="submit" name="name" value="Enviar" />
+}
+
+@ViewBag.mensagem
+<button onclick="Mensagem()">Clique aqui para ver sua mensagem...</button>
+<hr />
+@Html.TextBox("txt2")
+<button id="btn">Clique aqui</button>
+<button id="btn2">Clique aqui</button>
+<p class="paragrafo">Este é um parágrafo</p>
+<p class="paragrafo">Este é um parágrafo2222222</p>
+<ul id="lista"></ul>
+<div id="div1"></div>
+@section scripts{
+    <script src="~/Scripts/script.js"></script>
+    <script>
+        $('#btn2').click(function () {
+            $('#div1').slideToggle('slow');
+            var texto = $('#txt2').val();
+            $('#txt2').val('');
+
+            $('#lista').append('<li>' + texto + '</li>');
+        });
+        $('#btn').click(function () {
+            var texto = $('#txt2').val();
+            $('#txt2').val('');
+            alert(texto);
+            $('.paragrafo').css('color', 'red');
+            $('#div1').css('background-color', 'red');
+            $('#div1').css('width', '200px');
+            $('#div1').css('height', '200px');
+
+
+        });
+        function Mensagem() {
+            //alert('Esta é uma mensagem usndo javascript!');
+            MensagemExterna();
+        }
+        //Mensagem();
+    </script>
+
+}
+
