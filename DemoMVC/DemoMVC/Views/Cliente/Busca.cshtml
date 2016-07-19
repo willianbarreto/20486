@@ -1,0 +1,28 @@
+﻿@model DemoMVC.Models.Cliente
+
+@{
+    ViewBag.Title = "Busca";
+}
+
+<h2>Busca</h2>
+
+<p>Busca por</p>
+
+@using (Html.BeginForm())
+{
+    <select id="filtro" name="filtro">
+  <option value="idade">Idade</option>
+  <option value="nome">Nome</option>
+</select>
+<div style="display: inline;">
+    <input type="text" name="val" value=" " />
+    <input type="submit" value="Busca" />
+</div>
+}
+
+@using (Html.BeginForm("Index", "Cliente", FormMethod.Get))
+{
+<div>
+    <input type="submit" class="btn-danger" value="Index" />
+</div>
+}

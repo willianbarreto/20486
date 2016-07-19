@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/jquery.mobile-1.4.5.css" rel="stylesheet" />
+    <link href="~/Content/jquery.mobile.external-png-1.4.5.css" rel="stylesheet" />
+    <link href="~/Content/jquery.mobile.icons-1.4.5.css" rel="stylesheet" />
+    <link href="~/Content/jquery.mobile.inline-png-1.4.5.css" rel="stylesheet" />
+    <link href="~/Content/jquery.mobile.inline-svg-1.4.5.css" rel="stylesheet" />
+    <link href="~/Content/jquery.mobile.structure-1.4.5.css" rel="stylesheet" />
+    <link href="~/Content/jquery.mobile.theme-1.4.5.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    @Html.MvcSiteMap().SiteMapPath()
+    <div class="show">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
+    
+    <script src="~/Scripts/jquery.mobile-1.4.5.js"></script>
+</body>
+</html>

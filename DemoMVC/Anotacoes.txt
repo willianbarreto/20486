@@ -1,0 +1,5 @@
+PM> Enable-Migrations // Habilitando a integração da aplicação com o banco
+
+PM> Add-Migration inicio // Marcador da versão do banco
+
+PM> Update-Database // Atulizando o banco de acordo com a classe

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<DemoMVC.Models.Cliente>
+
+@{
+    ViewBag.Title = "Lista";
+}
+
+<h2>Lista clientes por lista ordenada</h2>
+
+<div class="form-group">
+<ol>
+    @foreach (var item in Model)
+    {
+        <li>@item.Nome</li>
+    }
+</ol>
+</div>
+<div class="form-group inline">
+    @{
+    var nomes = new string[] {"Primavera", "Verão", "Outono", "Inverno"};
+    
+    <a href="#">@Model.First().Idade</a>
+    <br />
+    <select>
+        @foreach (var nome in nomes)
+        {
+            <option>@nome</option>
+        }
+    </select>
+    }
+</div>
+
+<ul>
+    @foreach (var item in ViewBag.carros)
+    {
+        <li>@item</li>
+    }
+</ul>
+
+<hr />
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@Html.Action("Mensagem", new {tipo = @item.Id})</li>
+    }
+</ul>
+
+@Html.DisplayNameFor(x => x.First().Email)
+@Html.DisplayFor(x => x.First().Email)
+
+@using (Html.BeginForm("Index", "Cliente", FormMethod.Get))
+{
+<div>
+    <input type="submit" class="btn-danger" value="Index" />
+</div>
+}

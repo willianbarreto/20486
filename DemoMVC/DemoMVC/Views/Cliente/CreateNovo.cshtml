@@ -1,0 +1,44 @@
+﻿@model DemoMVC.Models.Cliente
+
+@{
+    ViewBag.Title = "View1";
+}
+
+<h2>Novo Cliente</h2>
+
+@using (Html.BeginForm("Create", "Cliente", FormMethod.Post))
+{
+    @Html.ValidationSummary(false)
+    @Html.DisplayNameFor(x => x.Nome) <span>:</span>
+    @Html.TextBoxFor(x => x.Nome, new { placeholder = "Digite o nome:" })
+    @Html.ValidationMessageFor(x => x.Nome)
+    <br />
+    @Html.DisplayNameFor(x => x.Email) <span>:</span>
+    @Html.TextBoxFor(x => x.Email, new { placeholder = "Digite o e-mail:" })
+    @Html.ValidationMessageFor(x => x.Email)
+    <br />
+    @Html.DisplayNameFor(x => x.Idade) <span>:</span>
+    @Html.TextBoxFor(x => x.Idade, new { placeholder = "Digite a idade:" })
+    @Html.ValidationMessageFor(x => x.Idade)
+    <br />
+    @Html.DisplayNameFor(x => x.DataNascimento) <span>:</span>
+    @Html.TextBoxFor(x => x.DataNascimento, new { placeholder = "Digite a data de nascimento:" })
+    @Html.ValidationMessageFor(x => x.DataNascimento)
+    <br />
+
+    <input type="submit" class="btn-success" name="Salvar" value="Salvar " />
+}
+
+<hr />
+@using (Html.BeginForm("Index", "Cliente", FormMethod.Get))
+{
+<div>
+    <input type="submit" class="btn-danger" value="Index" />
+</div>
+}
+
+@*@Html.Partial("PartialCliente")
+
+<hr />
+
+@Html.Action("PartialCliente")*@

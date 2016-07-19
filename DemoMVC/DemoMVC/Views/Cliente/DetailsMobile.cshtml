@@ -1,0 +1,36 @@
+﻿@model DemoMVC.Models.Cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details para celular</h2>
+<p style="color:red">@ViewBag.datahora</p>
+
+<input type="text" name="" value=" " />
+
+<fieldset>
+    <legend>Cliente</legend>
+    @Html.DisplayNameFor(abc=>abc.Nome) <span>:</span>
+    @Html.DisplayFor(abc=>abc.Nome) <br />
+    @Html.DisplayNameFor(model=>model.Email) <span>:</span>
+    @Html.DisplayFor(model=>model.Email) <br />
+    @Html.DisplayNameFor(x=>x.Idade)<span>:</span>
+    @Html.DisplayFor(a=>a.Idade)
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
+@section scripts{
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/jquery.mobile-1.4.5.min.js"></script> 
+    <script>
+        // alert('Javascript injetado pela página de detalhes!');
+    </script>
+    }
+@section head{
+    <link href="~/Content/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    }

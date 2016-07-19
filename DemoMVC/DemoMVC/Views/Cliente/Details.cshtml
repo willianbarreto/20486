@@ -1,0 +1,60 @@
+﻿@model DemoMVC.Models.Cliente
+
+@{
+    ViewBag.Title = "Detalhes do cliente";
+}
+
+<h2>Detalhes do cliente</h2>
+<p style="color:red">@ViewBag.datahora</p>
+
+<input type="checkbox" data-role="flipswitch" id="datePicker">
+
+<fieldset>
+    <legend>Cliente</legend>
+
+    @Html.DisplayNameFor(a => a.Nome) <span>:</span>
+    @Html.DisplayFor(a => a.Nome)  <br />
+    @Html.DisplayNameFor(b => b.Email) <span>:</span>
+    @Html.DisplayFor(b => b.Email)  <br />
+    @Html.DisplayNameFor(c => c.Idade) <span>:</span>
+    @Html.DisplayFor(c => c.Idade)  <br />
+
+    @*<div class="display-label">
+         @Html.DisplayNameFor(model => model.Nome)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nome)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DataNascimento)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DataNascimento)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Idade)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Idade)
+    </div>*@
+</fieldset>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Voltar para lista", "Index")
+</p>
+
+@section script{
+    <script>
+        alert('Texto do javascript');
+    </script>
+    }
+<script src="~/Scripts/jquery.mobile-1.4.5.js"></script>

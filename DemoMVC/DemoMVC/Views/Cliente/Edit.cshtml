@@ -1,0 +1,71 @@
+﻿@model DemoMVC.Models.Cliente
+
+@{
+    ViewBag.Title = "Editar cliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Editar cliente</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Cliente</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nome)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nome)
+            @Html.ValidationMessageFor(model => model.Nome)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DataNascimento)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DataNascimento)
+            @Html.ValidationMessageFor(model => model.DataNascimento)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Idade)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Idade)
+            @Html.ValidationMessageFor(model => model.Idade)
+        </div>
+
+        <p>
+            <input type="submit" class="btn-success" name="Salvar" value="Salvar " />
+        </p>
+    </fieldset>
+}
+
+@*<div>
+    @Html.ActionLink("Voltar para lista", "Index")
+</div>*@
+
+<div>
+    @using (Html.BeginForm("Index", "Cliente", FormMethod.Get))
+    {
+    <div>
+        <input type="submit" class="btn-danger" value="Index" />
+    </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
